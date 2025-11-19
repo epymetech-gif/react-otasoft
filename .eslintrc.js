@@ -4,7 +4,7 @@ module.exports = {
       node: true,
       es6: true,
     },
-    parserOptions: { ecmaVersion: 8 },
+    parserOptions: { ecmaVersion: 8, sourceType: 'module' },
     ignorePatterns: ['node_modules/*', '.next/*', '.out/*', '!.prettierrc.js'],
     extends: ['eslint:recommended'],
     overrides: [
@@ -23,20 +23,15 @@ module.exports = {
           'plugin:react/recommended',
           'plugin:react-hooks/recommended',
           'plugin:jsx-a11y/recommended',
+          'plugin:prettier/recommended',
         ],
         rules: {
           'react/prop-types': 'off', // We will use TypeScript's types for component props instead
           'react/react-in-jsx-scope': 'off', // No need to import React when using Next.js
           'jsx-a11y/anchor-is-valid': 'off', // This rule is not compatible with Next.js's <Link /> components
           '@typescript-eslint/no-unused-vars': ['error'],
-          '@typescript-eslint/explicit-function-return-type': [
-            'warn',
-            {
-              allowExpressions: true,
-              allowConciseArrowFunctionExpressionsStartingWithVoid: true,
-            },
-          ],
-          'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
+          '@typescript-eslint/explicit-function-return-type': 'off',
+          '@typescript-eslint/explicit-module-boundary-types': 'off',
         },
       },
     ],
